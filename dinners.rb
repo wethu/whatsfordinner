@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 load 'init.rb'
 
 PROTEIN_FREQ = {

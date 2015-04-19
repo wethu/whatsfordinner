@@ -1,5 +1,6 @@
 require 'date'
 require 'yaml'
+require 'prawn'
 
 # Extentions
 Dir['lib/*.rb'].each { |f| load f }
