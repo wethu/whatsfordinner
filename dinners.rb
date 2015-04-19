@@ -10,7 +10,9 @@ PROTEIN_FREQ = {
 
 data = YAML::load_file('db/store.yml')
 
-dinners = []
+dinners = DinnerList.new
 data.each do |dinner|
   dinners.push(Dinner.new(dinner))
 end
+
+puts "Found: #{dinners.find("steak")}"

@@ -1,5 +1,10 @@
 class String
   def titleize
-    self.split(' ').each { |s| s.gsub!(/^./, s[0].upcase!) }
+    deunderscore.split(' ').each { |s| s.gsub!(/\b[a-z]/, s[0].upcase!) }.join(' ')
+  end
+
+  private
+  def deunderscore
+    self.gsub('_', ' ')
   end
 end

@@ -1,5 +1,5 @@
 !ruby/Hash---
-:steak:
+"steak":
   :protein: :beef
   :time: 3600
   :ingredients:
@@ -7,7 +7,7 @@
     :lettice: 1
     :tomatoo: 2
     :red_onion: 1
-:parmy:
+"parmy":
   :protein: :chicken
   :time: 3600
   :ingredients:
@@ -16,7 +16,7 @@
     :cheese_grated: 100g
     :ham: 100g
     :potato_chips: 500g
-:carbonara:
+"carbonara":
   :protein: :pork
   :time: 3600
   :ingredients:
@@ -25,14 +25,14 @@
     :egg_yoke: 5
     :onion: 1
     :pasta: 350g
-:chicken_curry:
+"chicken_curry":
   :protein: :beef
   :time: 1800
   :ingredients:
   - :evaporated_milk: 1 tin
     :chicken_breast: 1
     :spices: true
-:kebab:
+"kebab":
   :protein: :beef
   :time: 3600
   :ingredients:
@@ -41,13 +41,13 @@
     :tomatoo: 2
     :cheese: 200g
     :onion: 1
-:fish_chips:
+"fish_chips":
   :protein: :fish
   :time: 3600
   :ingredients:
   - :fish: 1
     :chips: 300g
-:tomoto_chicken:
+"tomoto_chicken":
   :protein: :chicken
   :time: 3600
   :ingredients:
@@ -57,7 +57,7 @@
     :garlic: true
     :spices: true
     :onion: 1
-:sushi:
+"sushi":
   :protein: :chicken
   :time: 7200
   :ingredients:
@@ -65,7 +65,7 @@
     :nori: 6 sheets
     :chicken_breast: 1
     :kfc_spices: 1
-:dongsnmash:
+"dongsnmash":
   :protein: :beef
   :time: 3600
   :ingredients:
@@ -73,7 +73,7 @@
     :thin_sausages: 2
     :potatos: 5
     :vegtables: 1
-:pizza:
+"pizza":
   :protein: :mix
   :time: 2700
   :ingredients:
@@ -86,7 +86,7 @@
     :spices: true
     :cheese: 150g
     :lebo_bread: 2
-:beef_burgers:
+"beef_burgers":
   :protein: :beef
   :time: 3600
   :ingredients:
@@ -101,7 +101,7 @@
     :bread: 4
     :mayonase: true
     :mustard: true
-:tex_mex_chicken:
+"tex_mex_chicken":
   :protein: :chicken
   :time: 3600
   :ingredients:
@@ -109,7 +109,7 @@
     :bread_crumbs: true
     :potatos: 5
     :vegtables: true
-:shepards_pie:
+"shepards_pie":
   :protein: :beef
   :time: 10800
   :ingredients:
@@ -121,7 +121,7 @@
     :carrot: 2
     :pea_corn: 100g
     :garlic: true
-:strogenoff:
+"strogenoff":
   :protein: :beef
   :time: 7200
   :ingredients:
@@ -133,7 +133,7 @@
     :garlic: true
     :sour_cream: 100g
     :spices: true
-:stew:
+"stew":
   :protein: :beef
   :time: 10800
   :ingredients:
@@ -144,7 +144,7 @@
     :pea_corn: 100g
     :garlic: true
     :zucchini: 1
-:chicken_wings:
+"chicken_wings":
   :protein: :chicken
   :time: 3600
   :ingredients:
@@ -154,7 +154,7 @@
     :soy: 1tbsp
     :tomoto_sauce: 2tbsp
     :garlic: true
-:mongolian_beef:
+"mongolian_beef":
   :protein: :beef
   :time: 3600
   :ingredients:
@@ -167,7 +167,7 @@
     :garlic: true
     :mongolian_maranade: true
     :mongolian_sauce: true
-:seafood:
+"seafood":
   :protein: :fish
   :time: :unknown
   :ingredients:
@@ -177,7 +177,7 @@
     :samon: 2
     :chips: 300g
     :salad: true
-:curry_sausages:
+"curry_sausages":
   :protein: :beef
   :time: 3600
   :ingredients:
