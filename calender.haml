@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr
+      - Date::DAYNAMES.each do |day|
+        %th= day
+
+  - dinners.each do |dinner|
+    dinners%tbody
+      %tr
+        - Date::DAYNAMES.each do |day|
+          %td
+            %h2= dinner.name
+            %h3= dinner.prep_time
+            %ul
+              - dinner.ingredients.each do |ingredient|
+                %li= ingredient
