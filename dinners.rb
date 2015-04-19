@@ -1,18 +1,19 @@
 #!/usr/bin/env ruby
 load 'init.rb'
 
-PROTEIN_FREQ = {
-  :chicken => 3,
-  :pork => 2,
-  :beef => 2,
-  :fish => 3
-}
+class Main
+  def initialize
+    @persistent_store = Persistence.new('db/dinners.yml')
+  end
 
-data = YAML::load_file('db/store.yml')
+  def dinners
+    @persistent_store.data
+  end
 
-dinners = DinnerList.new
-data.each do |dinner|
-  dinners.push(Dinner.new(dinner))
+  def test
+    puts dinners.to_yaml
+  end
 end
 
-puts "Found: #{dinners.find("steak")}"
+main = Main.new
+main.test

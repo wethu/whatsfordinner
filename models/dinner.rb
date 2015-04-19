@@ -1,4 +1,4 @@
-class Dinner < Persistence
+class Dinner
   attr_accessor :ingredients, :protein, :prep_time, :name
 
   def initialize(data = nil)
