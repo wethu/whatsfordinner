@@ -3,8 +3,8 @@ class Persistence
   attr_reader :data
 
   def initialize(store_path)
-    @data = YAML::load_file(store_path)
-    @data = DinnerList.new(@data)
+    yaml = YAML::load_file(store_path)
+    @data = DinnerList.new(yaml)
   end
 
   def delete

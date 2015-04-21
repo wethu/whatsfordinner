@@ -11,7 +11,7 @@ class DinnerList < Array
 
   # FIXME: This actually doesn't grab a random set or week, just first 7
   def week
-    shuffle.slice!(0..6)
+    shuffle!.slice!(0..6)
   end
 
 end
