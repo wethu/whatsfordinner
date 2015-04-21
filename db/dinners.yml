@@ -204,3 +204,9 @@
     :spices: true
   protein: beef
   prep_time: 3600
+- !ruby/object:Dinner
+  name: Random
+  ingredients:
+    :money: $80
+  protein: random
+  prep_time: 3600
