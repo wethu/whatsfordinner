@@ -4,6 +4,7 @@ class Persistence
 
   def initialize(store_path)
     @data = YAML::load_file(store_path)
+    @data = DinnerList.new(@data)
   end
 
   def delete

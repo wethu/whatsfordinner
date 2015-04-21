@@ -8,8 +8,8 @@ class DinnerList < Array
     :fish => 3
   }
 
-  def find(name)
-    self.select {|d| d.name.include? name }
+  def week
+    shuffle.slice!(0..6)
   end
 
 end

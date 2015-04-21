@@ -3,50 +3,52 @@ load 'init.rb'
 
 class Main
   def initialize
-    @persistent_store = Persistence.new('db/dinners.yml')
+    @persistent_store ||= Persistence.new('db/dinners.yml')
   end
+
+  def render
+    Prawn::Document.generate('dinners.pdf', :page_size => 'EXECUTIVE',
+      :page_layout => :landscape) do |pdf|
+
+      pdf.define_grid(:columns => 7, :rows => 3, :gutter => 5)
+      Date::DAYNAMES.each_with_index do |day, i|
+        pdf.grid([0,i],[0,i]).bounding_box do
+
+          pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
+          pdf.text "#{dinners[i].name}", :align => :center, :size => 12
+          pdf.stroke_horizontal_rule
+          pdf.move_down 5
+
+          dinners[i].ingredients.each do |i, v|
+            text = "• #{humanize(v)} #{i.to_s.titleize}"
+            pdf.indent(5) { pdf.text text, :align => :left, :size => 8 }
+          end
+          pdf.stroke_bounds
+        end
+
+        pdf.grid([1,i],[1,i]).bounding_box do
+          pdf.text day, :align => :center
+          pdf.stroke_bounds
+        end
+
+      end
+    end
+  end
+
+  private
 
   def dinners
     @persistent_store.data
   end
 
-  def render
-    # Prawn::Document.generate('dinners.pdf',
-    #   :page_size => 'EXECUTIVE',
-    #   :page_layout => :landscape) do
-
-    Calender.generate('dinners.pdf',
-                      :page_size => 'EXECUTIVE',
-                      :page_layout => :landscape) do
-      define_grid(:columns => 7, :rows => 4)
-
-      Date::DAYNAMES.each_with_index do |day, i|
-        grid([0,i],[0,i]).bounding_box do
-          text day, :align => :center
-          stroke_bounds
-        end
-
-        grid([1,i],[1,i]).bounding_box do
-          text day, :align => :center
-          stroke_bounds
-        end
-
-        grid([2,i],[2,i]).bounding_box do
-          text day, :align => :center
-          stroke_bounds
-        end
-
-        grid([3,i],[3,i]).bounding_box do
-          text day, :align => :center
-          stroke_bounds
-        end
-      end
-    end
+  def humanize(value)
+    value.kind_of?(TrueClass) ? "Add" : value
   end
 
-  def test
-    puts dinners.to_yaml
+  def total_dinners
+    dinners.count
   end
+
 end
 
 main = Main.new
