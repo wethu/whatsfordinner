@@ -6,6 +6,7 @@ class Main
     @persistent_store ||= Persistence.new('db/dinners.yml')
   end
 
+  # TODO Extract all this out into a prawn class, include Prawn::View
   def render
     Prawn::Document.generate('dinners.pdf', :page_size => 'EXECUTIVE',
       :page_layout => :landscape) do |pdf|
@@ -43,10 +44,6 @@ class Main
 
   def humanize(value)
     value.kind_of?(TrueClass) ? "Add" : value
-  end
-
-  def total_dinners
-    dinners.count
   end
 
 end
