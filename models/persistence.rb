@@ -1,16 +1,20 @@
-class Persistence
+class Persistence < Array
 
   attr_reader :data
 
-  def initialize(store_path)
-    yaml = YAML::load_file(store_path)
-    @data = DinnerList.new(yaml)
-  end
+
+  # def initialize(store_path)
+  #   # yaml = YAML::load_file(store_path)
+  #   # DinnerList.new(yaml)
+  # end
 
   def delete
   end
 
   def update
+  end
+
+  def find(*)
   end
 
   private
@@ -22,4 +26,5 @@ class Persistence
   def store
     File.open('../db/dinners.yml', 'w')
   end
+
 end

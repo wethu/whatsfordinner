@@ -1,4 +1,4 @@
-class DinnerList < Array
+class DinnerList < Persistence
 
   # TODO: Implement this into randomizer
   # Amount of times per week you want a certain kind of protein
@@ -9,7 +9,12 @@ class DinnerList < Array
     :fish => 3
   }
 
-  # FIXME: This actually doesn't grab a random set or week, just first 7
+  STORE = YAML::load_file('db/dinners.yml')
+
+  def initialize
+    super(STORE)
+  end
+
   def week
     shuffle!.slice!(0..6)
   end

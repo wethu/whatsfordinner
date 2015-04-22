@@ -2,24 +2,20 @@
 load 'init.rb'
 
 class Main
-  def initialize
-    @persistent_store ||= Persistence.new('db/dinners.yml')
-  end
 
-  # TODO Extract all this out into a prawn class, include Prawn::View
+  # TODO: Extract all this out into a prawn class, include Prawn::View
   def render
     Prawn::Document.generate('dinners.pdf', :page_size => 'EXECUTIVE',
       :page_layout => :landscape) do |pdf|
 
       pdf.define_grid(:columns => 7, :rows => 3, :gutter => 5)
 
-      week1 = data.week
-      week2 = data.week
+      week1 = dinners.week
+      week2 = dinners.week
 
       Date::DAYNAMES.each_with_index do |day, i|
 
         pdf.grid([0,i],[0,i]).bounding_box do
-
 
           pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
           pdf.text "#{week1[i].name}", :align => :center, :size => 12
@@ -46,30 +42,14 @@ class Main
           end
           pdf.stroke_bounds
         end
-
-        # pdf.grid([2,i],[2,i]).bounding_box do
-
-        #   dinners = data.week
-
-        #   pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
-        #   pdf.text "#{dinners[i].name}", :align => :center, :size => 12
-        #   pdf.stroke_horizontal_rule
-        #   pdf.move_down 5
-
-        #   dinners[i].ingredients.each do |i, v|
-        #     text = "• #{humanize(v)} #{i.to_s.titleize}"
-        #     pdf.indent(5) { pdf.text text, :align => :left, :size => 8 }
-        #   end
-        #   pdf.stroke_bounds
-        # end
       end
     end
   end
 
   private
 
-  def data
-    @persistent_store.data
+  def dinners
+    @dinners ||= DinnerList.new
   end
 
   def humanize(value)
