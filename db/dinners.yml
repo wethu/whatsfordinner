@@ -230,3 +230,14 @@
   protein: random
   prep_time: 3600
   id: 20
+- !ruby/object:Dinner
+  name: Soup
+  ingredients:
+    :chicken_breast: 1
+    :carrot: 2
+    :potato: 3
+    :onion: 1
+    :cellery: 1
+    :spices: true
+  prep_time: 3600
+  id: 21

@@ -1,13 +1,16 @@
 class Dinner
-  @@serial_id = 0
-  attr_accessor :name, :protein, :ingredients, :prep_time
+  attr_accessor :id, :name, :protein, :ingredients, :prep_time
 
-  def id
-    @id
+  def self.find(id)
+    DinnerList.new.select { |dinner| dinner.id == id }.pop
   end
 
-  def add_ingredient(value)
-    ingredients.push(value)
+  def self.find_by_name(name)
+    DinnerList.new.select { |dinner| dinner.name.include?(name.to_s.titleize) }
+  end
+
+  def save
+    DinnerList.add_to_store(self)
   end
 
 end

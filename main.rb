@@ -12,38 +12,46 @@ class Main
 
       week1 = dinners.week
       week2 = dinners.week
+      week3 = dinners.week
 
+      # WEEEEEEEEEEEEE! loops !
       Date::DAYNAMES.each_with_index do |day, i|
+        [week1, week2, week3].each_with_index do |week, j|
+          pdf.grid([j,i],[j,i]).bounding_box do
 
-        pdf.grid([0,i],[0,i]).bounding_box do
+            pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
+            pdf.text "#{week[i].name}", :align => :center, :size => 12
+            pdf.stroke_horizontal_rule
+            pdf.move_down 5
 
-          pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
-          pdf.text "#{week1[i].name}", :align => :center, :size => 12
-          pdf.stroke_horizontal_rule
-          pdf.move_down 5
-
-          week1[i].ingredients.each do |i, v|
-            text = "• #{humanize(v)} #{i.to_s.titleize}"
-            pdf.indent(5) { pdf.text text, :align => :left, :size => 8 }
+            week[i].ingredients.each do |i, v|
+              text = "• #{humanize(v)} #{i.to_s.titleize}"
+              pdf.indent(5) { pdf.text text, :align => :left, :size => 8 }
+            end
+            pdf.stroke_bounds
           end
-          pdf.stroke_bounds
-        end
-
-        pdf.grid([1,i],[1,i]).bounding_box do
-
-          pdf.pad_top(6) { pdf.text day, :align => :center, :size => 10 }
-          pdf.text "#{week2[i].name}", :align => :center, :size => 12
-          pdf.stroke_horizontal_rule
-          pdf.move_down 5
-
-          week2[i].ingredients.each do |i, v|
-            text = "• #{humanize(v)} #{i.to_s.titleize}"
-            pdf.indent(5) { pdf.text text, :align => :left, :size => 8 }
-          end
-          pdf.stroke_bounds
         end
       end
+
     end
+  end
+
+  # FIXME REMOVE!
+  def test_store
+    puts Dinner.find(1).inspect
+    d = Dinner.new
+    d.name = "Soup"
+    d.ingredients = {
+      :chicken_breast => 1,
+      :carrot => 2,
+      :potato => 3,
+      :onion => 1,
+      :cellery => 1,
+      :spices => true
+    }
+    d.prep_time = 1.hour
+    d.id = DinnerList.new.count
+    d.save
   end
 
   private
@@ -56,7 +64,9 @@ class Main
     value.kind_of?(TrueClass) ? "Add" : value
   end
 
+
 end
 
 main = Main.new
 main.render
+main.test_store #FIXME REMOVE!

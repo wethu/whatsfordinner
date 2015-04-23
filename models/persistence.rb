@@ -1,30 +1,18 @@
 class Persistence < Array
 
-  attr_reader :data
-
-
-  # def initialize(store_path)
-  #   # yaml = YAML::load_file(store_path)
-  #   # DinnerList.new(yaml)
-  # end
-
-  def delete
+  def self.store_path(path)
+    @store_path=(path)
   end
 
-  def update
+  def self.add_to_store(object)
+    list = DinnerList.new.push(object)
+    if Dinner.find(object.id).nil?
+      list.update_store!
+    end
   end
-
-  def find(*)
-  end
-
-  private
 
   def update_store!
-    store { |s| s.write @data.to_yaml } if valid?
-  end
-
-  def store
-    File.open('../db/dinners.yml', 'w')
+    File.open('db/dinners.yml', 'w') { |s| s.write self.to_yaml }
   end
 
 end
