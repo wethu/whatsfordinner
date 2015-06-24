@@ -2,6 +2,13 @@ require 'date'
 require 'yaml'
 require 'prawn'
 require 'pry'
+require 'active_record'
+require 'sqlite3'
+require 'logger'
+
+ActiveRecord::Base.logger = Logger.new('log/debug.log')
+configuration = YAML::load(IO.read('db/database.yml'))
+ActiveRecord::Base.establish_connection(configuration['development'])
 
 # Extentions
 Dir['lib/*.rb'].each { |f| require_relative f }
