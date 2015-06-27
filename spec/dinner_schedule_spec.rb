@@ -15,9 +15,6 @@ RSpec.describe DinnerSchedule, "#render" do
 
     # Check for a random dinner to be present
     dinner = data[rand(data.count)][random_day]
-
-
     expect(text_analysis.strings).to include(dinner.name)
-
   end
 end
