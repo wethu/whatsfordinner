@@ -1,4 +1,5 @@
 class Dinner < ActiveRecord::Base
+  #TODO: Extract a recipe object
   serialize :ingredients, Hash
 
   def self.week(multiple = false)
