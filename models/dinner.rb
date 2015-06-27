@@ -1,7 +1,14 @@
 class Dinner < ActiveRecord::Base
   serialize :ingredients, Hash
   # FIXME: No duplicates
-  def self.week
-    all.shuffle.slice(0..6)
+  def self.week(multiple = false)
+    return Dinner.mix.each_slice(7).to_a.slice(0..multiple) if multiple
+    Dinner.mix.slice(0..6)
+  end
+
+  private
+
+  def self.mix
+    return all.shuffle.to_a
   end
 end
