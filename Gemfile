@@ -7,6 +7,7 @@ gem 'rspec'
 gem 'sqlite3'
 gem 'activerecord'
 gem 'logger'
+gem 'curses'
 
 group :test do
   gem 'pdf-inspector', :require => 'pdf/inspector'

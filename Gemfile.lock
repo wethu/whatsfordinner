@@ -19,6 +19,7 @@ GEM
     arel (6.0.0)
     builder (3.2.2)
     coderay (1.1.0)
+    curses (1.0.1)
     diff-lcs (1.2.5)
     hashery (2.1.1)
     i18n (0.7.0)
@@ -72,6 +73,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  curses
   logger
   pdf-inspector
   prawn
