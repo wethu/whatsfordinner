@@ -29,8 +29,4 @@ class WeeklyDinners
   end
 
   private
-  # FIXME: Move me/rethink?
-  def self.humanize(value)
-    value.kind_of?(TrueClass) ? "Add" : value
-  end
 end

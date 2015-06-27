@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 load 'init.rb'
-WeeklyDinners.new.render
+DinnerSchedule.new(Dinner.week(3)).render_file 'new.pdf'
