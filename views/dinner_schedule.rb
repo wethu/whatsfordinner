@@ -13,6 +13,7 @@ class DinnerSchedule < Prawn::Document
   private
   def draw_week(week, row)
     week.each_with_index do |dinner, index|
+      dinner = DinnerCell.new(dinner)
       day = Date::DAYNAMES[index]
       grid([row, index], [row, index]).bounding_box do
         pad_top(6) { text day, :align => :center, :size => 10 }

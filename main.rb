@@ -33,6 +33,7 @@ while (run) do
     run = false
   elsif (input == 'p')
     DinnerSchedule.new(data).render_file 'DinnerSchedule.pdf'
+    system("open DinnerSchedule.pdf")
     run = false
   end
 end

@@ -1,5 +1,4 @@
 class Dinner < ActiveRecord::Base
-  #TODO: Extract a recipe object
 
   has_one :recipe
 
