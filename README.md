@@ -8,7 +8,7 @@
 ```bash
 ./dinners # :P
 
-# Resuffle, Exit, or Print (to pdf)
+# Reshuffle, Exit, or Print (to pdf)
 ```
 
 ### Coming Soon
