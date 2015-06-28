@@ -5,8 +5,10 @@
 
 ### Usage
 
-```
+```bash
 ./dinners # :P
+
+# Resuffle, Exit, or Print (to pdf)
 ```
 
 ### Coming Soon
