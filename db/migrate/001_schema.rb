@@ -1,6 +1,6 @@
 class Schema < ActiveRecord::Migration
   def change
-    create_table :dinners, :force => true do |t|
+    create_table :dinners, force: true do |t|
       t.string :name
       t.string :protein
       t.string :ingredients

@@ -1,6 +1,5 @@
 class DinnerCell
-
-  delegate :ingredients, :to => :@dinner
+  delegate :ingredients, to: :@dinner
 
   def initialize(dinner)
     @dinner = dinner
@@ -9,5 +8,4 @@ class DinnerCell
   def name
     @dinner.name.to_s.titleize
   end
-
 end

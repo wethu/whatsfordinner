@@ -5,7 +5,8 @@ class String
   end
 
   private
+
   def deunderscore
-    self.gsub('_', ' ')
+    tr("_", " ")
   end
 end

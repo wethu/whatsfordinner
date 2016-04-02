@@ -1,9 +1,9 @@
-require 'pdf/inspector'
-require_relative '../init'
-require_relative '../views/dinner_schedule'
+require "pdf/inspector"
+require_relative "../init"
+require_relative "../views/dinner_schedule"
 
-RSpec.describe DinnerSchedule, "#render" do
-  it 'renders a pdf with headings and dinners' do
+RSpec.describe DinnerSchedule, '#render' do
+  it "renders a pdf with headings and dinners" do
     data = Dinner.week(3)
     random_day = rand(7)
 
