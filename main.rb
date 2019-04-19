@@ -4,7 +4,7 @@ load "init.rb"
 def draw_table(data)
   table = TTY::Table.new(
     header: Date::DAYNAMES,
-    rows: data.map { |r| r.map(&:name).to_a }.to_a
+    rows: data.map { |r| r.map(&:name) }
   )
   puts table.render :ascii, padding: [0, 2, 0, 2] do
     border.separator = :each_row
@@ -13,27 +13,23 @@ end
 
 def prompt
   pastel = Pastel.new
-  shell = TTY::Shell.new
-  shell.ask pastel.green.on_black.bold("Shuffle Again? (y/n) OR Print? (p)") do
-    argument :required
-    default "y"
-  end.read_string
+  shell = TTY::Prompt.new
+  choices = %w(Yes No Print)
+  shell.enum_select(pastel.green.on_black.bold("Shuffle Again?"), choices)
 end
 
 run = true
-data = Dinner.week(3)
-draw_table(data)
+draw_table(Dinner.week(3))
 
 while run
-  input = prompt
-  if input == "y"
-    data = Dinner.week(3)
-    draw_table(data)
-  elsif input == "n"
-    run = false
-  elsif input == "p"
+  case prompt
+  when "Yes"
+    draw_table(Dinner.week(3))
+  when "Print"
     DinnerSchedule.new(data).render_file "DinnerSchedule.pdf"
     system("open DinnerSchedule.pdf")
+    run = false
+  else
     run = false
   end
 end

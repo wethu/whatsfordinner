@@ -5,8 +5,8 @@ require "pry"
 require "active_record"
 require "sqlite3"
 require "logger"
-require "curses"
-require "tty"
+require "tty-prompt"
+require 'tty-table'
 
 Prawn::Font::AFM.hide_m17n_warning = true
 ActiveRecord::Base.logger = Logger.new("log/debug.log")

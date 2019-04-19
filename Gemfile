@@ -7,10 +7,9 @@ gem "rspec"
 gem "sqlite3"
 gem "activerecord"
 gem "logger"
-gem "curses"
-gem "tty"
+gem "tty-prompt"
+gem "tty-table"
 
-gem "rubocop", require: false
 gem "simplecov", require: false
 
 group :test do

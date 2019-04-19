@@ -3,7 +3,7 @@ class Dinner < ActiveRecord::Base
 
   serialize :ingredients, Hash
 
-  scope :week, ->(amount = 1) {
-    limit(amount * 7).order("RANDOM()").each_slice(7).to_a
-  }
+  def self.week(number_of_weeks)
+    limit(number_of_weeks * 7).shuffle.each_slice(7).to_a
+  end
 end
